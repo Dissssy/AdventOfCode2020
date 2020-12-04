@@ -5,58 +5,39 @@ lines = text_file.read().split('\n\n')
 
 def check(thisline):
     for j in range(0, len(thisline)):
-        thisline[j] = thisline[j].split(':')
-        if(thisline[j][0] == 'byr'):
-            if(1920 > int(thisline[j][1]) or int(thisline[j][1]) > 2002):
-                print(thisline[j])
-                print('invalid byr')
-                return False
-        elif(thisline[j][0] == 'iyr'):
-            if(2010 > int(thisline[j][1]) or int(thisline[j][1]) > 2020):
-                print(thisline[j])
-                print('invalid iyr')
-                return False
-        elif(thisline[j][0] == 'eyr'):
-            if(2020 > int(thisline[j][1]) or int(thisline[j][1]) > 2030):
-                print(thisline[j])
-                print('invalid eyr')
-                return False
-        elif(thisline[j][0] == 'hgt'):
-            if(thisline[j][1].find('cm') > -1):
-                if(150 > int(thisline[j][1].replace('cm', '')) or int(thisline[j][1].replace('cm', '')) > 193):
-                    print(thisline[j])
-                    print('invalid hgt cm')
+        try:
+            thisline[j] = thisline[j].split(':')
+            if(thisline[j][0] == 'byr'):
+                if(1920 > int(thisline[j][1]) or int(thisline[j][1]) > 2002):
                     return False
-            elif(thisline[j][1].find('in') > -1):
-                if(59 > int(thisline[j][1].replace('in', '')) or int(thisline[j][1].replace('in', '')) > 76):
-                    print(thisline[j])
-                    print('invalid hgt in')
+            elif(thisline[j][0] == 'iyr'):
+                if(2010 > int(thisline[j][1]) or int(thisline[j][1]) > 2020):
+                    return False
+            elif(thisline[j][0] == 'eyr'):
+                if(2020 > int(thisline[j][1]) or int(thisline[j][1]) > 2030):
+                    return False
+            elif(thisline[j][0] == 'hgt'):
+                if(thisline[j][1].find('cm') > -1):
+                    if(150 > int(thisline[j][1].replace('cm', '')) or int(thisline[j][1].replace('cm', '')) > 193):
+                        return False
+                elif(thisline[j][1].find('in') > -1):
+                    if(59 > int(thisline[j][1].replace('in', '')) or int(thisline[j][1].replace('in', '')) > 76):
+                        return False
+                else:
+                    return False
+            elif(thisline[j][0] == 'hcl'):
+                if not(re.search(r'^#(?:[0-9a-fA-F]{1,2}){3}$', thisline[j][1])):
+                    return False
+            elif(thisline[j][0] == 'ecl'):
+                if('amb blu brn gry grn hzl oth'.find(thisline[j][1]) == -1):
+                    return False 
+            elif(thisline[j][0] == 'pid'):
+                if(len(thisline[j][1]) != 9):
                     return False
             else:
-                print(thisline[j])
-                print('invalid hgt something else')
                 return False
-        elif(thisline[j][0] == 'hcl'):
-            if not(re.search(r'^#(?:[0-9a-fA-F]{1,2}){3}$', thisline[j][1])):
-                print(thisline[j])
-                print('invalid hcl')
-                return False
-        elif(thisline[j][0] == 'ecl'):
-            if('amb blu brn gry grn hzl oth'.find(thisline[j][1]) == -1):
-                print(thisline[j])
-                print('invalid ecl')
-                return False 
-        elif(thisline[j][0] == 'pid'):
-            if(len(thisline[j][1]) != 9):
-                print(thisline[j])
-                print('invalid pid')
-                return False
-        else:
-            print(thisline[j])
-            print('invalid something else')
+        except:
             return False
-    print(thisline)
-    print('everything valid')
     return True
 
 count = 0
