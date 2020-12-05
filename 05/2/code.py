@@ -9,12 +9,16 @@ decimal = [0]*len(lines)
 for i in range(0, len(lines)):
     lines[i] = lines[i].replace('F', '0').replace('B', '1').replace('L', '0').replace('R', '1')
     for j in range(0, len(lines[i])):
-        decimal[i] += (int(lines[i][j]) % 10) * pow(2, 9 - j)
+        decimal[i] += (int(lines[i][j]) % 10) * pow(2, (len(lines[0]) - 1) - j)
 
 sort = sorted(decimal)
-final = 0
+processed = []
 for i in range(0, len(sort) - 2):
     if not (sort[i] == sort[i + 1] - 1 and sort[i + 1] - 1 == sort[i + 2] - 2):
-        final = sort[i]
+        processed.append(sort[i])
 
-print(final + 1)
+final = []
+for i in range(0, len(processed), 2):
+    final.append(processed[i] + 2)
+
+print(final)
