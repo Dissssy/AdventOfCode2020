@@ -5,6 +5,19 @@ lines = text_file.read().split('\n')
 #every input text file has an empty newline at the end, delete it
 lines.pop(-1)
 
+inbag = {}
+
+def countin(bag):
+    count = 1
+    if bag in inbag:
+        return inbag[bag]
+    else:
+        if len(lines[key[bag]][1]) == 0:
+            return 1
+        for i in range(0, len(lines[key[bag]][1])):
+            count += int(lines[key[bag]][1][i][0]) * int(countin(lines[key[bag]][1][i][1]))
+    inbag[bag] = count
+    return count
 
 for i in range(0, len(lines)):
     lines[i] = lines[i].split(" bags contain ")
@@ -22,21 +35,4 @@ key = {}
 for i in range(0, len(lines)):
     key[lines[i][0]] = i
 
-checked = {}
-
-def bagcheck(bag):
-    if(bag == "shiny gold"):
-        return True
-    if bag in checked:
-        return checked[bag]
-    else:
-        for i in range(0, len(lines[key[bag]][1])):
-            if bagcheck(lines[key[bag]][1][i][1]):
-                checked[bag] = True
-                return True
-        return False
-
-for i in range(0, len(lines)):
-    bagcheck(lines[i][0])
-
-print(len(checked))
+print(countin("shiny gold") - 1)
