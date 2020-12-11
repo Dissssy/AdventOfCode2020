@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 from collections import defaultdict 
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
@@ -18,3 +20,4 @@ for i in lines:
     dictionary[i] += dictionary[i - 1] + dictionary[i - 2] + dictionary[i - 3]
 
 print(dictionary[lines[len(lines) - 1]])
+print("--- %s seconds ---" % (time.time() - start_time))

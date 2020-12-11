@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
 instructions = text_file.read().split('\n')
@@ -27,3 +29,4 @@ while(check[i] == 0):
         break
 
 print(acc)
+print("--- %s seconds ---" % (time.time() - start_time))

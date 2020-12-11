@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
 lines = text_file.read().split('\n')
@@ -36,3 +38,4 @@ for i in range(0, len(lines)):
     key[lines[i][0]] = i
 
 print(countin("shiny gold") - 1)
+print("--- %s seconds ---" % (time.time() - start_time))

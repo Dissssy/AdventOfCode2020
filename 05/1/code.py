@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
 lines = text_file.read().split('\n')
@@ -17,3 +19,4 @@ for i in range(0, len(decimal)):
         largest = decimal[i]
 
 print(largest)
+print("--- %s seconds ---" % (time.time() - start_time))

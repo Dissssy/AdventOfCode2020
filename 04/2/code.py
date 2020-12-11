@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 import re
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
@@ -72,4 +74,4 @@ for i in range(0, len(lines)):
     #print(lines[i])
 
 print(count)
-
+print("--- %s seconds ---" % (time.time() - start_time))

@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
 lines = text_file.read().split('\n')
@@ -18,4 +20,5 @@ for i in range(0, len(lines) - 1):
 
 count[2] += 1
 
-print(f"{count[0]} * {count[2]} = {count[0] * count[2]}")
+print(count[0] * count[2])
+print("--- %s seconds ---" % (time.time() - start_time))

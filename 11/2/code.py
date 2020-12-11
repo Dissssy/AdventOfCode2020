@@ -1,5 +1,6 @@
 from copy import deepcopy
 import time
+start_time = time.time()
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
 lines = text_file.read().split('\n')
@@ -52,7 +53,6 @@ for i in range(0, len(lines)):
 
 newgrid = deepcopy(grid)
 changed = True
-start_time = time.time()
 while changed:
     for i in range(0, len(lines)):
         for j in range(0, len(lines[0])):
@@ -75,7 +75,6 @@ for i in range(0, len(lines)):
         if grid[i + 1][j + 1][0]:
             if grid[i + 1][j + 1][1]:
                 count += 1
-print("--- %s seconds ---" % (time.time() - start_time))
 #makereadable(grid)
 print(count)
-
+print("--- %s seconds ---" % (time.time() - start_time))

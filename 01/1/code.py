@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
 lines = text_file.read().split('\n')
@@ -22,3 +24,4 @@ def main_loop():
 
 #run the main loop, print the output
 print(main_loop())
+print("--- %s seconds ---" % (time.time() - start_time))

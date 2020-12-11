@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 #open the file and parse it into a list of strings on newlines
 text_file = open("input.txt", "r")
 lines = text_file.read().split('\n')
@@ -32,3 +34,4 @@ output = ((checkslope([1,1],formatted)) *
           (checkslope([2,1],formatted)))
 
 print(output)
+print("--- %s seconds ---" % (time.time() - start_time))
