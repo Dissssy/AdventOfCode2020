@@ -1,9 +1,7 @@
-
 04/2/bigboy.txt
 05/2/bigboy.txt
 07/1/bigboy.txt
 07/2/bigboy.txt
-template/
 11/1/testinput.txt
 11/2/testinput.txt
 11/2/testinput2.txt
@@ -29,3 +27,7 @@ template/
 10/2/run.bat
 11/1/run.bat
 11/2/run.bat
+template/1/code.py
+template/1/run.bat
+template/2/code.py
+template/2/run.bat
